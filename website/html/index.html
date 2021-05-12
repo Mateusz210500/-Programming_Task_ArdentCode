@@ -6,7 +6,6 @@
     <title>text-editor</title>
     <link rel="stylesheet" href="../css/style.css" />
     <script src="../js/script.js" defer></script>
-    <script src="../js/read.js" defer></script>
     <script src="../js/write.js" defer></script>
     <!-- <script
       src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.js"
@@ -46,12 +45,23 @@
           </button>
         </div>
         <div class="right-buttons">
+          <button type="button" class="btn" id="save">File</button>
+          <!-- <button type="button" class="btn" id="load">load</button> -->
+        </div>
+      </div>
+      <div class="content" contenteditable="true" id="content">tekst</div>
+    </div>
+    <div class="modal hidden">
+      <h2 class="modalHeader">List plików json:</h2>
+      <form class="fileList"></form>
+      <div class="modalFooter">
+        <input type="text" class="fileName" />
+        <div class="buttons">
           <button type="button" class="btn" id="import">Import</button>
           <button type="button" class="btn" id="export">Export</button>
         </div>
       </div>
-      <div class="content" contenteditable="true" id="content">tekst</div>
-      <!-- <input type="text" id="content" /> -->
     </div>
+    <div class="overlay hidden"></div>
   </body>
 </html>

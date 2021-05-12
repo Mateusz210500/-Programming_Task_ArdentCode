@@ -26,14 +26,20 @@ app.post("/api", (request, response) => {
   });
 });
 
-app.get("/apii", function (request, response) {
-  response.send("hello world");
-});
+// app.get("/api", function (request, response) {
+//   response.send("hello world");
+// });
 
 function saveToJson(jsonData) {
-  fs.writeFile("website/js/new.json", jsonData, function (err) {
+  fs.writeFile("website/js/json/new.json", jsonData, function (err) {
     if (err) {
       console.log(err);
     }
   });
 }
+
+app.get("/fileNames", function (req, res) {
+  const files = fs.readdirSync("website/js/json");
+  console.log(files);
+  res.send(files);
+});
