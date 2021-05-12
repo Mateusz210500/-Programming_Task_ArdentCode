@@ -26,6 +26,10 @@ app.post("/api", (request, response) => {
   });
 });
 
+app.get("/apii", function (request, response) {
+  response.send("hello world");
+});
+
 function saveToJson(jsonData) {
   fs.writeFile("website/js/new.json", jsonData, function (err) {
     if (err) {

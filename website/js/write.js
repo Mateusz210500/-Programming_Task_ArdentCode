@@ -1,15 +1,6 @@
 "use strict";
 
-// const button = document.getElementById("export");
-
-// button.addEventListener("click", () => {
-//   const text = document.querySelector(".content").textContent;
-//   console.log("click");
-//   localStorage.setItem(text, JSON.stringify(text));
-// });
-
 function setup() {
-  // loadJSON("website/js/new.json", gotData);
   console.log("running");
   let text = select("#content").html();
   let exportButton = select("#export");
@@ -19,22 +10,37 @@ function setup() {
 }
 
 async function saveData() {
-  const data = select("#content").html();
+  const text = select("#content").html();
   const options = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ data }),
+    body: JSON.stringify({ text }),
   };
   const response = await fetch("/api", options);
   const json = await response.json();
   console.log(json);
 }
 
-function loadData() {
-  // let words = loadJSON("website/js/new.json");
-  document.querySelector(".content").textContent += ` ${words}`;
-  console.log(words);
-  return words["text"];
+async function loadData() {
+  // document.querySelector(".content").textContent += ` ${words}`;
+  // console.log(words);
+  // return words["text"];
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    mode: "cors",
+    cache: "default",
+  };
+  fetch("website/js/new.json", options)
+    .then(function (resp) {
+      return resp.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      document.querySelector(".content").textContent += ` ${data.text}`;
+    });
 }
