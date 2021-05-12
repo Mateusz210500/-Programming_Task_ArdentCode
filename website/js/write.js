@@ -41,6 +41,7 @@ async function loadData() {
     })
     .then(function (data) {
       console.log(data);
-      document.querySelector(".content").textContent += ` ${data.text}`;
+      document.querySelector(".content").innerHTML += ` ${data.text}`;
+      // select("#content").html() = ` ${data.text}`;
     });
 }
