@@ -18,7 +18,7 @@ function setup() {
   exportButton.mousePressed(saveData);
 }
 
-function saveData() {
+async function saveData() {
   const data = select("#content").html();
   const options = {
     method: "POST",
@@ -27,9 +27,9 @@ function saveData() {
     },
     body: JSON.stringify({ data }),
   };
-  fetch("/api", options).then((response) => {
-    console.log(response);
-  });
+  const response = await fetch("/api", options);
+  const json = await response.json();
+  console.log(json);
 }
 
 function loadData() {

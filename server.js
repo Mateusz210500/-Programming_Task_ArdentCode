@@ -20,9 +20,16 @@ app.post("/api", (request, response) => {
   console.log(request.body);
   const data = request.body;
   const jsonData = JSON.stringify(data);
+  saveToJson(jsonData);
+  response.json({
+    status: "success",
+  });
+});
+
+function saveToJson(jsonData) {
   fs.writeFile("website/js/new.json", jsonData, function (err) {
     if (err) {
       console.log(err);
     }
   });
-});
+}
