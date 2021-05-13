@@ -28,9 +28,20 @@ app.post("/api", (request, response) => {
   });
 });
 
-// app.get("/api", function (request, response) {
-//   response.send("hello world");
-// });
+app.post("/api_2", (request, response) => {
+  console.log(request.body);
+  const jsonFileName = request.body.fileName;
+  const jsonDel = `website/js/json/${jsonFileName}.json`;
+  fs.unlink(jsonDel, (err) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+  });
+  response.json({
+    status: "success",
+  });
+});
 
 function saveToJson(jsonData, fileName) {
   fs.writeFile(`website/js/json/${fileName}.json`, jsonData, function (err) {

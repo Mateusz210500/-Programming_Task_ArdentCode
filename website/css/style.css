@@ -72,6 +72,17 @@ body {
   border: 1.6px solid black;
 }
 
+.buttons .btn:hover {
+  background-color: rgb(4, 121, 121);
+  color: white;
+  transform: scale(1.1);
+  border: 1.6px solid black;
+}
+
+#delete:hover {
+  background-color: rgb(187, 15, 15);
+}
+
 .content {
   background-color: white;
   min-height: 300px;

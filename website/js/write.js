@@ -6,9 +6,11 @@ function setup() {
   const exportButton = select("#export");
   const importButton = select("#import");
   const saveButton = select("#save");
+  const deleteButton = select("#delete");
   importButton.mousePressed(loadData);
   exportButton.mousePressed(saveData);
   saveButton.mousePressed(loadFileNames);
+  deleteButton.mousePressed(deleteFile);
 }
 
 async function saveData() {
@@ -22,6 +24,21 @@ async function saveData() {
     body: JSON.stringify({ text, fileName }),
   };
   const response = await fetch("/api", options);
+  const json = await response.json();
+  console.log(json);
+  console.log(fileName);
+}
+
+async function deleteFile() {
+  const fileName = select(".fileName").value();
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ fileName }),
+  };
+  const response = await fetch("/api_2", options);
   const json = await response.json();
   console.log(json);
   console.log(fileName);
