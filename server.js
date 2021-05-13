@@ -20,7 +20,9 @@ app.post("/api", (request, response) => {
   console.log(request.body);
   const data = request.body;
   const jsonData = JSON.stringify(data);
-  saveToJson(jsonData);
+  const jsonFileName = request.body.fileName;
+  console.log(jsonData);
+  saveToJson(jsonData, jsonFileName);
   response.json({
     status: "success",
   });
@@ -30,8 +32,8 @@ app.post("/api", (request, response) => {
 //   response.send("hello world");
 // });
 
-function saveToJson(jsonData) {
-  fs.writeFile("website/js/json/new.json", jsonData, function (err) {
+function saveToJson(jsonData, fileName) {
+  fs.writeFile(`website/js/json/${fileName}.json`, jsonData, function (err) {
     if (err) {
       console.log(err);
     }
@@ -39,6 +41,8 @@ function saveToJson(jsonData) {
 }
 
 app.get("/fileNames", function (req, res) {
+  const fileName = req.body;
+  console.log(fileName);
   const files = fs.readdirSync("website/js/json");
   console.log(files);
   res.send(files);

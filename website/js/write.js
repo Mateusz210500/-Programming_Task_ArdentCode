@@ -12,17 +12,19 @@ function setup() {
 }
 
 async function saveData() {
+  const fileName = select(".fileName").value();
   const text = select("#content").html();
   const options = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ text }),
+    body: JSON.stringify({ text, fileName }),
   };
   const response = await fetch("/api", options);
   const json = await response.json();
   console.log(json);
+  console.log(fileName);
 }
 
 async function loadFileNames() {
@@ -43,6 +45,7 @@ async function loadFileNames() {
 }
 
 async function loadData() {
+  const fileName = select(".fileName").value();
   const options = {
     method: "GET",
     headers: {
@@ -51,7 +54,7 @@ async function loadData() {
     mode: "cors",
     cache: "default",
   };
-  fetch("website/js/json/new.json", options)
+  fetch(`website/js/json/${fileName}.json`, options)
     .then(function (resp) {
       return resp.json();
     })
