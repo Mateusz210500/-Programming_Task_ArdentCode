@@ -12,7 +12,8 @@ body {
 .main {
   border: 2px solid rgb(43, 43, 43);
   border-radius: 5px;
-  width: 600px;
+  /* width: 600px; */
+  width: 70%;
   top: 50%;
   left: 50%;
   position: absolute;
@@ -41,6 +42,7 @@ body {
   margin-left: 5px;
   cursor: pointer;
   height: 25px;
+  padding: 3px 10px;
 }
 
 .toolbar .btn:hover {
@@ -53,7 +55,7 @@ body {
   justify-content: space-between;
 }
 
-.btn {
+.btnNorm {
   background-color: white;
   outline: none;
   margin-right: 10px;
@@ -65,31 +67,35 @@ body {
   border-radius: 8px;
 }
 
-.right-buttons .btn:hover {
+.btnNorm:hover {
   background-color: rgb(4, 121, 121);
   color: white;
   transform: scale(1.1);
   border: 1.6px solid black;
 }
 
-.buttons .btn:hover {
-  background-color: rgb(4, 121, 121);
-  color: white;
-  transform: scale(1.1);
-  border: 1.6px solid black;
+.btnNorm:active {
+  background-color: rgb(5, 44, 44);
 }
 
-#delete:hover {
+#deleteFile:hover {
   background-color: rgb(187, 15, 15);
+}
+
+#deleteFile:active {
+  background-color: rgb(61, 7, 7);
 }
 
 .content {
   background-color: white;
-  min-height: 300px;
+  /* min-height: 300px; */
+  height: 50vh;
+  z-index: -2;
   border: 1px solid white;
   border-top: 0px;
   padding: 20px;
   outline: none;
+  overflow: auto;
 }
 
 .overlay {
@@ -148,6 +154,7 @@ body {
   align-items: center;
   gap: 2.5rem;
   height: 14rem;
+  overflow: auto;
 }
 
 .fileName {

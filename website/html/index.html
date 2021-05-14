@@ -45,21 +45,21 @@
           </button>
         </div>
         <div class="right-buttons">
-          <button type="button" class="btn" id="save">File</button>
+          <button type="button" class="btnNorm" id="save">File</button>
           <!-- <button type="button" class="btn" id="load">load</button> -->
         </div>
       </div>
       <div class="content" contenteditable="true" id="content">tekst</div>
     </div>
     <div class="modal hidden">
-      <h2 class="modalHeader">Lista plików json:</h2>
-      <form class="fileList"></form>
+      <h2 class="modalHeader">JSON files list:</h2>
+      <div class="fileList"></div>
       <div class="modalFooter">
-        <input type="text" class="fileName" />
+        <input type="text" class="fileName" placeholder="File name" />
         <div class="buttons">
-          <button type="button" class="btn" id="import">Import</button>
-          <button type="button" class="btn" id="export">Export</button>
-          <button type="button" class="btn" id="delete">Delete</button>
+          <button type="button" class="btnNorm" id="deleteFile">Delete</button>
+          <button type="button" class="btnNorm" id="import">Import</button>
+          <button type="button" class="btnNorm" id="export">Export</button>
         </div>
       </div>
     </div>

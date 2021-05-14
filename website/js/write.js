@@ -6,7 +6,7 @@ function setup() {
   const exportButton = select("#export");
   const importButton = select("#import");
   const saveButton = select("#save");
-  const deleteButton = select("#delete");
+  const deleteButton = select("#deleteFile");
   importButton.mousePressed(loadData);
   exportButton.mousePressed(saveData);
   saveButton.mousePressed(loadFileNames);
@@ -27,6 +27,7 @@ async function saveData() {
   const json = await response.json();
   console.log(json);
   console.log(fileName);
+  loadFileNames();
 }
 
 async function deleteFile() {
@@ -40,8 +41,7 @@ async function deleteFile() {
   };
   const response = await fetch("/api_2", options);
   const json = await response.json();
-  console.log(json);
-  console.log(fileName);
+  loadFileNames();
 }
 
 async function loadFileNames() {
@@ -55,12 +55,11 @@ async function loadFileNames() {
   };
   const response = await fetch("/fileNames", options);
   const json = await response.json();
-  console.log(`lista: ${json}`);
+  console.log(json);
   document.querySelector(".fileList").innerHTML = `<li>${json.join(
-    "</li><li>"
+    "</li ><li>"
   )}</li>`;
 }
-
 async function loadData() {
   const fileName = select(".fileName").value();
   const options = {
@@ -77,6 +76,7 @@ async function loadData() {
     })
     .then(function (data) {
       console.log(data);
-      document.querySelector(".content").innerHTML += ` ${data.text}`;
+      document.querySelector(".content").innerHTML = ` ${data.text}`;
     });
+  loadFileNames();
 }

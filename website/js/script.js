@@ -5,6 +5,7 @@ const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const saveBtn = document.querySelector("#save");
 const loadBtn = document.querySelector("#load");
+const fileName = document.querySelector(".fileName");
 
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
